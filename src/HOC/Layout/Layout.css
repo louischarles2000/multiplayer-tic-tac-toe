@@ -1,0 +1,36 @@
+.Layout{
+    width: 100%;
+    height: 100vh;
+}
+.Dashboard{
+    background-color: rgb(21, 156, 156);
+    height: 100%;
+    width: 20%;
+    float: left;
+    border-right: 1px solid rgb(22, 134, 129);
+    box-shadow: 1px 0px 8px 1px rgba(29, 87, 77, 0.74);
+    z-index: 999;
+}
+main{
+    float: right;
+    width: 79.5%;
+    height: 100%;
+    overflow: hidden;
+    overflow-y: scroll;
+    /* background-color: #fff; */
+    z-index: 100;
+}
+
+@media(max-width: 1050px){
+    .Dashboard{
+        position: fixed;
+        width: 40%;
+        transform: translateX(-100%);
+        transition: transform .5s;
+    }
+    main{
+        width: 90%;
+        padding: 20px auto;
+        overflow-y: hidden;
+    }
+}
