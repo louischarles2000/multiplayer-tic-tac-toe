@@ -1,4 +1,16 @@
 
+export const textLength = sentence => {
+    const textArr = [];
+    let text;
+    sentence.split(' ').map(word => {
+        textArr.push(word);
+        if(textArr.join('').length <= 30){
+            text = textArr.join(' ');
+        }
+    });
+    return text + '...';
+}
+
 export const getTime = (year, month, day, hours, minutes) => {
     const date = new Date();
     const months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
@@ -7,11 +19,8 @@ export const getTime = (year, month, day, hours, minutes) => {
     if(date.getFullYear() === year){
             if(date.getDate() === day){
             if(date.getHours() === hours){
-                if(date.getMinutes() === minutes){
+                if(date.getMinutes() === minutes || date.getMinutes() < minutes){
                     return time = ' now';
-                }
-                if(date.getMinutes() < minutes){
-                    return time = ' now'
                 }
 
                 if(date.getMinutes() > minutes){
@@ -30,12 +39,12 @@ export const getTime = (year, month, day, hours, minutes) => {
                 }
                 
             }else{
-                return time = months[month - 1] + ' ' + day;
+                return time =  day + ' ' + months[month - 1];
             }
         }
   
     }else{
-        return time = day + ' ' + months[month - 1] + ' ' + year;
+        return time = day + '/ ' + months[month - 1] + '/ ' + year;
     }
 
     return time;

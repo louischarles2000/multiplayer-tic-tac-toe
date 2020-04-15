@@ -9,18 +9,24 @@ const navigationItems = props => {
         classes = [cssClasses.NavigationItems, cssClasses.Open];
     }
 
+    const navigationItems = [
+        {link: '/', name: 'home'},
+        {link: '/events', name: 'events'},
+        {link: '/stationary', name: 'stationary'},
+        {link: '/gen-supply', name: 'gen supply'},
+        {link: '/building', name: 'building'},
+        {link: '/printing', name: 'printing'},
+        {link: '/office', name: 'office'},
+        {link: '/textile', name: 'textile'},
+        {link: '/contact-us', name: 'contact us'},
+    ]
+
     
     return(
         <nav className={classes.join(' ')}>
-            <NavigationItem link="/" clicked={props.remove}>HOME</NavigationItem>
-            <NavigationItem link="/events" clicked={props.remove}>EVENTS</NavigationItem>
-            <NavigationItem link="/stationary" clicked={props.remove}>STATIONARY</NavigationItem>
-            <NavigationItem link="/gen-supply" clicked={props.remove}>GEN SUPPLY</NavigationItem>
-            <NavigationItem link="/building" clicked={props.remove}>BUILDING</NavigationItem>
-            <NavigationItem link="/printing" clicked={props.remove}>PRINTING</NavigationItem>
-            <NavigationItem link="/office" clicked={props.remove}>OFFICE</NavigationItem>
-            <NavigationItem link="/textile" clicked={props.remove}>TEXTILE</NavigationItem>
-            <NavigationItem link="/contact-us" clicked={props.remove}>CONTACT US</NavigationItem>
+            {navigationItems.map(item => (
+                <NavigationItem key={item.link} link={item.link} clicked={props.clicked}>{item.name}</NavigationItem>
+            ))}
         </nav>
     );
 }

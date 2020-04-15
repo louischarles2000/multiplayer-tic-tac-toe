@@ -1,0 +1,86 @@
+.Message{
+    width: 100%;
+    border-bottom: 1px solid #ccc;  
+    padding: 0px;
+    cursor: pointer;
+}
+
+.Message:hover{
+    box-shadow: 1px 4px 4px #ccc;
+}
+
+.container{
+    width: 90%;
+    margin: 0px auto;
+}
+.heading,
+.service,
+.message,
+.time{
+    display: inline-block;
+    padding: 0px;
+    margin-right: 20px;
+}
+
+.heading{
+    width: 25%;
+}
+
+.heading p{
+    font-size: 14px;
+    padding: 0px;
+    font-weight: bold;
+}
+.group{
+    width: 60%;
+    padding: 0px;
+    margin: 0px;
+    display: inline-block;
+}
+
+.time{
+    width: 10%;
+    margin: 0px;
+}
+
+.time p{
+    font-weight: bold;
+    font-size: 14px;
+}
+.service p{
+    font-weight: bold;
+    font-size: 14px;
+    padding: 0px;
+}
+.message p{
+    color: #555;
+    font-weight: lighter;
+    font-size: 12px;
+}
+
+@media(max-width: 807px){
+    .Message{
+        width: 90%;
+    }
+    .heading,
+    .service,
+    .message,
+    .time{
+        display: block;
+        padding: 0px;
+        margin: 0px;
+    }
+    .heading{
+        width: 70%;
+    }
+    .group{
+        width: 80%;
+    }
+    p{
+        margin: 2px;
+        font-size: 12px;
+    }
+    .time{
+        float: right;
+    }
+}

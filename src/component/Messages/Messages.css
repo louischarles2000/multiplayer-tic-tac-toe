@@ -1,0 +1,10 @@
+.Messages{
+    /* background-color: cornflowerblue; */
+    width: 95%;
+    height: 73vh;
+    margin: 0px auto;
+    padding: 10px;
+    border-top: 1px dashed rgb(83, 233, 185);
+    overflow: hidden;
+    overflow-y: scroll;
+}
