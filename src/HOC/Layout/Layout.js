@@ -16,6 +16,9 @@ class Layout extends Component{
             };
         });
     }
+    bcakDropHandler = () => {
+        this.setState({showManu: false})
+    }
     render(){
         let position;
         let cssClasses;
@@ -31,7 +34,8 @@ class Layout extends Component{
             };
 
             cssClasses = [classes.Dashboard, classes.Close]
-        }
+        };
+
 
         return(
             <div className={classes.Layout}>
@@ -50,12 +54,12 @@ class Layout extends Component{
                
                 <Backdrop show={this.state.showManu} clicked={this.toggleShowManuHandler}/>
                 <div className={cssClasses.join(' ')}>
-                    <NavigationItems clicked={this.toggleShowManuHandler}/> 
+                    <NavigationItems clicked={this.bcakDropHandler}/> 
                 </div>
                 <main>
                     <div className={classes.Header}>
                         <div className={classes.Heading}>
-                            <h1>WELLSPRINGS ADMIN PAGE</h1>
+                            <h1>WELLSPRINGS ADMIN</h1>
                         </div>
                     </div>
                     {this.props.children}

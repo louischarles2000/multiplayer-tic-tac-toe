@@ -18,7 +18,7 @@ const navigationItems = props => {
         {link: '/printing', name: 'printing'},
         {link: '/office', name: 'office'},
         {link: '/textile', name: 'textile'},
-        {link: '/contact-us', name: 'contact us'},
+        {link: '/contacts', name: 'customers'},
     ]
 
     

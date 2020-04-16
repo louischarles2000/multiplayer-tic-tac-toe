@@ -7,8 +7,12 @@ const Messages = props => {
     console.log(props.orders);
 
     let messages;
+    let classes = [cssClasses.Messages, cssClasses.Remove]
+    if(props.orders.length >= 10){
+        classes = [cssClasses.Messages, '']
+    }
     if(props.orders !== null){
-        messages = props.orders.map(order => (
+        messages = props.orders.reverse().map(order => (
                 <Message 
                     key={order.id}
                     name={order.data.name}
@@ -21,7 +25,7 @@ const Messages = props => {
         messages = <p>THERE ARE NO MESSAGES YET</p>
     }
     return(
-        <div className={cssClasses.Messages}>
+        <div className={classes.join(' ')}>
             {messages}
         </div>
     );

@@ -1,4 +1,12 @@
 
+export const scrollbar = (list) => {
+    if(list.length >= 10){
+        return true;
+    }else{
+        return false
+    }
+};
+
 export const textLength = sentence => {
     const textArr = [];
     let text;

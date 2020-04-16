@@ -21,7 +21,7 @@ const Message = props => (
                 <p>{getTime(
                     2020,
                     props.time.month,
-                    15,
+                    9,
                     props.time.hour,
                     props.time.minutes
                     )}</p>

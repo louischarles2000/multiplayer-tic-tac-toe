@@ -1,0 +1,13 @@
+.MessageBody{
+    width: 100%;
+    /* padding: 10px; */
+}
+
+.head{
+    padding: 20px;
+}
+
+.head p{
+    font-size: 30px;
+    font-weight: lighter;
+}

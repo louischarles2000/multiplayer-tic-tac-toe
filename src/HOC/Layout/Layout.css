@@ -40,7 +40,7 @@ main{
         transform: translateX(0%);
     }
     .Close{
-        transform: translateX(-100%);
+        transform: translateX(-102%);
     }
     .Dashboard{
         position: fixed;
