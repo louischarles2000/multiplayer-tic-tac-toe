@@ -15,13 +15,6 @@
     overflow-y: hidden;
 }
 
-  /* ::-webkit-scrollbar-thumb {
-    background:  rgb(83, 233, 185);
-    color: cadetblue;
-    border-radius: 10px;
-  } */
-
-
   /* width */
   ::-webkit-scrollbar {
     width: 8px;

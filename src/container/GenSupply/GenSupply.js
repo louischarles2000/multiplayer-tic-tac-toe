@@ -3,8 +3,8 @@ import React, { Component } from 'react';
 // import cssClasses from './Staionary.css';
 import Messages from '../../component/Messages/Messages';
 import Spinner from '../../component/Spinner/Spinner';
-import Empty from '../../component/Note/empty/empty';
-import Notify from '../../component/Note/notify/notify';
+import Empty from '../../component/ReusableComps/Note/empty/empty';
+import Notify from '../../component/ReusableComps/Note/notify/notify';
 
 class GenSupply extends Component{
     render(){

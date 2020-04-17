@@ -19,7 +19,9 @@ const Messages = props => {
                     service={order.data.service}
                     subject={order.data.subject}
                     message={order.data.message}
-                    time={order.data.date}/>
+                    time={order.data.date}
+                    number={order.data.phone}
+                    id={order.id}/>
         ));
     }else{
         messages = <p>THERE ARE NO MESSAGES YET</p>
