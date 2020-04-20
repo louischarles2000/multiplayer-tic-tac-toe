@@ -1,7 +1,9 @@
 import React from 'react';
+import { withRouter } from 'react-router-dom';
 
 import cssClasses from './NavigationItems.css';
 import NavigationItem from './NavigationItem/NavigationItem';
+import ItemsNumber from '../ReusableComps/itemsNumber/itemsNumber';
 const navigationItems = props => {
     let classes = [cssClasses.NavigationItems, cssClasses.shut];
 
@@ -20,14 +22,31 @@ const navigationItems = props => {
         {link: '/textile', name: 'textile'},
         {link: '/contacts', name: 'customers'},
     ]
-
+    const getUnreadMessages = (service) => {
+        service = service.split('').filter(el => el !== '/').join('');
+        const unreadMessages = [];
+        if(service === 'gen-supply'){
+            service = 'general Supply';
+        }
+        if(props.unread){
+            for(let key in props.unread){
+                if(props.unread[key].service === service){
+                    unreadMessages.push(props.unread);
+                }
+            }
     
+        }
+        return unreadMessages.length;
+    }
     return(
         <nav className={classes.join(' ')}>
             {navigationItems.map(item => (
-                <NavigationItem key={item.link} link={item.link} clicked={props.clicked}>{item.name}</NavigationItem>
+                <div key={item.link} className={cssClasses.NavItem} onClick={props.clicked}>
+                    <NavigationItem link={item.link} clicked={props.clicked}>{item.name}</NavigationItem>
+                    <ItemsNumber clicked={() => props.history.push(item.link)}>{getUnreadMessages(item.link)}</ItemsNumber>
+                </div>
             ))}
         </nav>
     );
 }
-export default navigationItems;
+export default withRouter(navigationItems);

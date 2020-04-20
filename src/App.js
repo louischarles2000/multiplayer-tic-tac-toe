@@ -17,17 +17,22 @@ class App extends Component {
   state = {
     orders: null,
     loading: false, 
-    error: null
+    error: null,
+    unread: null
 }
 componentDidMount(){
     this.setState({loading: true});
     const orderArray = [];
+    const unread = [];
     axios.get('https://wellspring-baa0b.firebaseio.com/orders.json')
     .then(response => {
         for(let key in response.data){
+            if(response.data[key].read === false){
+              unread.push(response.data[key]);
+            }
             orderArray.push({id: key, data: response.data[key]});
         }
-        this.setState({loading: false, orders: orderArray})
+        this.setState({loading: false, orders: orderArray, unread: unread})
     }).catch(err => this.setState({loading: false, error: err}));
 }
 
@@ -35,7 +40,7 @@ componentDidMount(){
     return (
       <div className={classes.App}>
         <BrowserRouter>
-            <Layout>
+            <Layout unread={this.state.unread}>
               <Route path="/" exact render={() => <Home orders={this.state.orders} loading={this.state.loading} error={this.state.error}/>}/>
               <Route path="/events" render={() => <Events orders={this.state.orders} loading={this.state.loading} error={this.state.error}/>}/>
               <Route path="/stationary" render={() => <Stationary orders={this.state.orders} loading={this.state.loading} error={this.state.error}/>}/>

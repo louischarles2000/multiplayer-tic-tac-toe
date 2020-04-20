@@ -7,6 +7,25 @@ export const scrollbar = (list) => {
     }
 };
 
+export const getNumbers = list => {
+    const arr = [];
+    let numberOfRead, numberOfUnread, overAllNumber;
+    overAllNumber = list.length;
+    list.map(el => {
+        if(el.data.read){
+            arr.push(el);
+        }
+        return arr;
+    });
+    numberOfRead = arr.length
+    numberOfUnread = overAllNumber - numberOfRead;
+    return {
+        overAllNumber,
+        numberOfRead,
+        numberOfUnread
+    };
+};
+
 export const textLength = sentence => {
     const textArr = [];
     let text;

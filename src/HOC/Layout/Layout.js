@@ -54,7 +54,7 @@ class Layout extends Component{
                
                 <Backdrop show={this.state.showManu} clicked={this.toggleShowManuHandler}/>
                 <div className={cssClasses.join(' ')}>
-                    <NavigationItems clicked={this.bcakDropHandler}/> 
+                    <NavigationItems clicked={this.bcakDropHandler} unread={this.props.unread}/> 
                 </div>
                 <main>
                     <div className={classes.Header}>

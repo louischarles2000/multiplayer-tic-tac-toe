@@ -23,15 +23,6 @@ const Message = props => {
     }
 
     const onClickHandler = () => {
-        const details = {
-            name: props.name,
-            service: props.service,
-            subject: props.subject,
-            message: props.message,
-            number: props.number,
-            time: getTime( 2020,props.time.month,9,props.time.hour,props.time.minutes)
-        };
-        // console.log(details);
         props.history.push(`/message?id=${props.id}`)
         // props.history.push(`/message?details=${JSON.stringify(details)}`)
         // props.history.push(`/message?name=${details.name}&service=${details.service}&subject=${details.subject}&message=${details.message}&number=${details.number}&time=${details.time}`);

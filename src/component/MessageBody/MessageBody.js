@@ -12,7 +12,6 @@ const MessageBody = props => {
     useEffect(() => {
         setLoading(true);
         const id = props.location.search.split('=').pop();
-        let details;
         axios.get('https://wellspring-baa0b.firebaseio.com/orders.json')
         .then(response => {
             for(let key in response.data){
@@ -24,16 +23,6 @@ const MessageBody = props => {
             setLoading(false);
         }).catch(err => this.setState({loading: false, error: err}));
     }, []);
-    console.log();
-    // const details = {
-    //         name: 'Louis Charles Guma',
-    //         time: '11:45 AM (3 hours ago)',
-    //         email: 'louischarles.2000@gmail.com',
-    //         message: `Un-forgiveness is downright dangerous. It will make your spirit feeble and your prayers ineffective. It will pull the plug on your faith so completely that you won't have enough power to move the molehills in your life - much less the mountains. The Bible says it grows into a festering root of bitterness that doesn't just harm us, but defiles anyone who keeps company with us. Why on earth would we willingly want to hold onto our disappointment and offense`,
-    //         service: 'events',
-    //         subject: 'Birthday',
-    //         number: '0997436272'
-    //     };
 
     let body;
     if(loading){

@@ -4,7 +4,6 @@ import cssClasses from './Messages.css';
 import Message from './Message/Message';
 
 const Messages = props => {
-    console.log(props.orders);
 
     let messages;
     let classes = [cssClasses.Messages, cssClasses.Remove]

@@ -1,18 +1,14 @@
 .NavigationItem {
-    margin: 15px;
+    /* margin: 15px;   */
     list-style: none;
     text-align: center;
     position: relative;
-    border-bottom: 1px solid rgb(28, 134, 148);
-    padding: 10px 0px;
-    border-width: 100%;
-    background-color: rgba(7, 150, 150, 0.554);
-    transition: box-shadow .2s;
+    display: inline-block;
 }
-.NavigationItem:hover,
+/* .NavigationItem:hover,
 .NavigationItem:active{
     box-shadow: 1px 8px 5px rgb(28, 134, 148);
-}
+} */
 
 .NavigationItem a{
     cursor: pointer;
