@@ -1,22 +1,16 @@
-import React, { useState } from 'react';
+import React, {  } from 'react';
 import cssClasses from './Home.css';
 import Messages from '../../component/Messages/Messages';
 import Spinner from '../../component/Spinner/Spinner';
 import Empty from '../../component/ReusableComps/Note/empty/empty';
 import Notify from '../../component/ReusableComps/Note/notify/notify';
 // import { getNumbers } from '.././../Utility';
+import NumbersPanel from '../../component/ReusableComps/numbersPanel/numbersPanel';
 
 const Home = props => {
-    // const [numbers, setNumbers] = useState();
     let messages;
+    console.log(props.numbers);
     if(props.orders){
-        // const {overAllNumber, numberOfRead, numberOfUnread} = getNumbers(props.orders);
-        // const nums = {
-        //     ...getNumbers(props.orders)
-        // };
-        
-        // console.log(nums)
-        // setNumbers(getNumbers(props.orders));
         messages = <Messages orders={props.orders}/>
         if(props.orders.length === 0){
             messages = <Empty />;
@@ -30,8 +24,8 @@ const Home = props => {
     }
 
     return(
-        <div className={cssClasses.Home}>         
-            <h2>Home:</h2>
+        <div className={cssClasses.Home}>
+            <NumbersPanel heading="Home" numbers={props.numbers}/>
             {messages}
         </div>
     );

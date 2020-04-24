@@ -7,7 +7,7 @@ const Messages = props => {
 
     let messages;
     let classes = [cssClasses.Messages, cssClasses.Remove]
-    if(props.orders.length >= 10){
+    if(props.orders.length >= 11){
         classes = [cssClasses.Messages, '']
     }
     if(props.orders !== null){
@@ -19,6 +19,7 @@ const Messages = props => {
                     subject={order.data.subject}
                     message={order.data.message}
                     time={order.data.date}
+                    read={order.data.read}
                     number={order.data.phone}
                     id={order.id}/>
         ));

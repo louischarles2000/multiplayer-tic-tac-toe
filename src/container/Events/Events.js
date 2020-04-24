@@ -4,14 +4,21 @@ import Messages from '../../component/Messages/Messages';
 import Spinner from '../../component/Spinner/Spinner';
 import Empty from '../../component/ReusableComps/Note/empty/empty';
 import Notify from '../../component/ReusableComps/Note/notify/notify';
+import { getNumbers } from '../../Utility';
+import NumberPanel from '../../component/ReusableComps/numbersPanel/numbersPanel';
 
 class Events extends Component {
     render(){
         let classes = [cssClasses.Events, '']
         let messages;
+        let numbers = null;
         if(this.props.orders !== null){
             const arr = this.props.orders.filter(el => el.data.service === 'events');
             messages = <Messages orders={arr}/>
+            numbers = {
+                ...this.props.numbers,
+                ...getNumbers(arr)
+            }
             // console.log();
             if(arr.length === 0){
                 messages = <Empty />;
@@ -25,8 +32,7 @@ class Events extends Component {
         }
         return (
             <div className={classes.join(' ')}>
-                <h2>Events</h2>
-                
+                <NumberPanel heading="Events" numbers={numbers}/>
                 {messages}
             </div>
         );

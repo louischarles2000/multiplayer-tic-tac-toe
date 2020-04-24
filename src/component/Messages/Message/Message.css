@@ -13,6 +13,14 @@
     width: 90%;
     margin: 0px auto;
 }
+
+.unread{
+    font-weight: bold;
+}
+.unread p{
+    color: #000;
+}
+
 .heading,
 .service,
 .message,
@@ -20,6 +28,7 @@
     display: inline-block;
     padding: 0px;
     margin-right: 20px;
+    color: rgb(137, 137, 137);
 }
 
 .heading{
@@ -29,7 +38,7 @@
 .heading p{
     font-size: 14px;
     padding: 0px;
-    font-weight: bold;
+    /* font-weight: bold; */
 }
 .group{
     width: 60%;
@@ -54,12 +63,12 @@
 }
 
 .time p{
-    font-weight: bold;
+    /* font-weight: bold; */
     font-size: 10px;
     /* padding: 10px; */
 }
 .service p{
-    font-weight: bold;
+    /* font-weight: bold; */
     font-size: 14px;
     padding: 0px;
     text-transform: capitalize;

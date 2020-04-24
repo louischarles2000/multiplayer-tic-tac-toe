@@ -1,4 +1,13 @@
 
+import * as firebase from 'firebase';
+
+export const unreadMessage = (id) => {
+    firebase.database().ref().child(`orders/${id}/read/`).update({read: false});
+}
+
+export const readMessage = (id) => {
+    // firebase.database().ref().child(`orders/${id}/read/`).push({read: true});
+}
 export const scrollbar = (list) => {
     if(list.length >= 10){
         return true;
@@ -12,7 +21,7 @@ export const getNumbers = list => {
     let numberOfRead, numberOfUnread, overAllNumber;
     overAllNumber = list.length;
     list.map(el => {
-        if(el.data.read){
+        if(el.data.read.read){
             arr.push(el);
         }
         return arr;
@@ -29,12 +38,14 @@ export const getNumbers = list => {
 export const textLength = sentence => {
     const textArr = [];
     let text;
-    sentence.split(' ').map(word => {
-        textArr.push(word);
-        if(textArr.join('').length <= 30){
-            text = textArr.join(' ');
-        }
-    });
+    if(sentence){
+        sentence.split(' ').map(word => {
+            textArr.push(word);
+            if(textArr.join('').length <= 30){
+                text = textArr.join(' ');
+            }
+        });
+    }
     return text + '...';
 }
 

@@ -1,15 +1,22 @@
 import React, { useState } from 'react';
+// import axios from 'axios';
+import * as firebase from 'firebase';
 import { withRouter } from 'react-router-dom';
 import { faTrash, faEnvelopeOpen } from '@fortawesome/free-solid-svg-icons';
 
 import cssClasses from './Message.css';
-import { getTime, textLength } from '../../../Utility';
+import { getTime, textLength, readMessage, unreadMessage } from '../../../Utility';
 import IconList from '../../ReusableComps/IconList/IconList';
 
 const Message = props => {
+    console.log(props.read.read);
+    let readStatus = [cssClasses.container, cssClasses.unread]
+    if(props.read.read){
+        readStatus = [cssClasses.container, ''];
+    }
     const [showIcons, setShowIcons] = useState(false);
     const icons = [
-        {name: faEnvelopeOpen, text: 'Mark as read', clicked: () => console.log('clicked')},
+        {name: faEnvelopeOpen, text: 'Mark as read', clicked: unreadMessage(props.id)},
         {name: faTrash, text: 'Delete', clicked: () => console.log('clicked')}
     ];
     let classes = [cssClasses.time, cssClasses.show];
@@ -21,16 +28,15 @@ const Message = props => {
         setShowIcons(false);
         classes = [cssClasses.time, cssClasses.show];
     }
-
-    const onClickHandler = () => {
-        props.history.push(`/message?id=${props.id}`)
-        // props.history.push(`/message?details=${JSON.stringify(details)}`)
-        // props.history.push(`/message?name=${details.name}&service=${details.service}&subject=${details.subject}&message=${details.message}&number=${details.number}&time=${details.time}`);
-    };
-
+      const onClickHandler = () => {
+        const fb = firebase.database().ref();
+        fb.child(`orders/${props.id}/read/`).update({read: true});
+        // readMessage(props.id);
+        props.history.push(`/message?id=${props.id}`);
+    }
     return(
         <div className={cssClasses.Message} onClick={onClickHandler} onMouseOver={mouseHoverHandler} onMouseOut={mouseoutHandler}>
-            <div className={cssClasses.container}>
+            <div className={readStatus.join(' ')}>
                 <div className={cssClasses.heading}>
                     <p>{props.name}</p>
                 </div>
@@ -47,9 +53,9 @@ const Message = props => {
                             </div> :
                 <div className={classes.join(' ')}>
                     <p>{getTime(
-                        2020,
+                        props.time.year ,
                         props.time.month,
-                        9,
+                        props.time.date,
                         props.time.hour,
                         props.time.minutes
                         )}</p>
