@@ -1,10 +1,13 @@
-import { useContext } from 'react'
-import './App.css'
-import Home from './pages/Home'
-import Background from './HOC/Background'
+import { useContext } from 'react';
+import './App.css';
+// import Home from './pages/Home'
+import Background from './HOC/Background';
 import { StreamChat } from 'stream-chat';
+import { Chat } from 'stream-chat-react';
 import Cookies from 'universal-cookie';
 import { AuthContext } from './Contexts/AuthContext';
+import GamePage from './pages/GamePage';
+import Auth from './components/Auth';
 
 const apiKey = "zvxx38u6rszp"
 // const secret = "a6sjfqkkfku8shjwcdsja9fcdbnymam2yatzqjhau542a4s9j7cj5tahyz2j725b"
@@ -30,29 +33,19 @@ function App() {
       setIsAuth(true)
     })
   }
-  
-  const logout = () => {
-    cookies.remove("token");
-    cookies.remove("userId");
-    cookies.remove("firstName");
-    cookies.remove("lastName");
-    cookies.remove("username");
-    cookies.remove("hashedPassword");
-    client.disconnectUser();
-    setIsAuth(false);
-  }
 
   return (
     <Background>
-      <Home />
-
-      {/* LOGOUT */}
-      {isAuth &&
-      <button
-        onClick={logout}
-        className='absolute top-3 right-3 bg-[red] p-2 text-white rounded-md text-sm'>
-        Logout
-      </button>}
+      <div className='md:px-[2rem] lg:px-[6rem] px-4 py-[5rem] min-h-[100vh]'>
+        <h1 className="text-4xl text-center font-black w-full ">
+          {isAuth ? 'Tic Tac Toe' : 'Welcome to Multi Tic Tac Toe!'}
+        </h1>
+        {isAuth ? 
+        <Chat client={client}>
+          <GamePage />
+        </Chat>
+        : <Auth />}
+      </div>
     </Background>
   )
 }

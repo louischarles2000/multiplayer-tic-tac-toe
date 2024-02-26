@@ -6,6 +6,7 @@ import { _email_regex } from '../../utilities/constatns';
 import { AuthContext } from '../../Contexts/AuthContext';
 import axios from 'axios';
 import Cookies from 'universal-cookie';
+import Card from '../Common/Card';
 
 const default_form = {
   firstName: '',
@@ -85,67 +86,65 @@ function Signup() {
   }
 
   return (
-    <div>
-      <div className='bg-white p-5 rounded-sm my-6 space-y-4'>
-        <Input 
-          placeholder='First Name'
-          name='firstName'
-          type='text'
-          onChange={handleChange}
-          />
-        <Input 
-          placeholder='Last Name'
-          name='lastName'
-          type='text'
-          onChange={handleChange}
-          />
-        <Input 
-          placeholder='Username'
-          name='username'
-          type='email'
-          onChange={handleChange}
-          />
-        <Input 
-          placeholder='Password'
-          name='password'
-          type={showPassword ? 'text' : 'password'}
-          onChange={handleChange}
-          />
-        <Input 
-          placeholder='Confirm Password'
-          name='confirmPassword'
-          type={showPassword ? 'text' : 'password'}
-          onChange={handleChange}
-          />
-        <div 
-          className='flex items-center gap-4 cursor-pointer'
-          onClick={toggleShowPassword}
-          >
-          <Input
-              placeholder='Show password'
-              type='checkbox'
-              checked={showPassword}
-              onChange={() => {}}
-              />
-          <label 
-            className='flex-1'
-            >Show password</label>
-        </div>
-        <MainButton 
-          onClick={signUp}
-          loading={loading}
-          disabled={formInvalid}
-          >
-          Sign up
-        </MainButton>
-        <LinkButton
-          onClick={handleSwitch}
-          center
-          >
-          Login
-        </LinkButton>
+    <Card>
+      <Input 
+        placeholder='First Name'
+        name='firstName'
+        type='text'
+        onChange={handleChange}
+        />
+      <Input 
+        placeholder='Last Name'
+        name='lastName'
+        type='text'
+        onChange={handleChange}
+        />
+      <Input 
+        placeholder='Username'
+        name='username'
+        type='email'
+        onChange={handleChange}
+        />
+      <Input 
+        placeholder='Password'
+        name='password'
+        type={showPassword ? 'text' : 'password'}
+        onChange={handleChange}
+        />
+      <Input 
+        placeholder='Confirm Password'
+        name='confirmPassword'
+        type={showPassword ? 'text' : 'password'}
+        onChange={handleChange}
+        />
+      <div 
+        className='flex items-center gap-4 cursor-pointer'
+        onClick={toggleShowPassword}
+        >
+        <Input
+            placeholder='Show password'
+            type='checkbox'
+            checked={showPassword}
+            onChange={() => {}}
+            />
+        <label 
+          className='flex-1'
+          >Show password</label>
       </div>
-    </div>
+      <MainButton 
+        onClick={signUp}
+        loading={loading}
+        disabled={formInvalid}
+        >
+        Sign up
+      </MainButton>
+      <LinkButton
+        onClick={handleSwitch}
+        center
+        >
+        Login
+      </LinkButton>
+    </Card>
   )
 }
 

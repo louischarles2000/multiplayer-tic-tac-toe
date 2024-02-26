@@ -6,6 +6,7 @@ import { _email_regex } from '../../utilities/constatns';
 import { AuthContext } from '../../Contexts/AuthContext';
 import axios from 'axios';
 import Cookies from 'universal-cookie'
+import Card from '../Common/Card';
 
 const default_form = {
   username: '',
@@ -76,49 +77,47 @@ function Login() {
   }
 
   return (
-    <div>
-      <div className='bg-white p-5 rounded-sm my-6 space-y-4'>
-        <Input 
-          placeholder='Username'
-          name='username'
-          type='email'
-          onChange={handleChange}
-          />
-        <Input 
-          placeholder='Password'
-          name='password'
-          type={showPassword ? 'text' : 'password'}
-          onChange={handleChange}
-          />
-        <div 
-          className='flex items-center gap-4 cursor-pointer'
-          onClick={toggleShowPassword}
-          >
-          <Input
-              placeholder='Show password'
-              type='checkbox'
-              checked={showPassword}
-              onChange={() => {}}
-              />
-          <label 
-            className='flex-1'
-            >Show password</label>
-        </div>
-        <MainButton
-          onClick={login}
-          disabled={formInvalid}
-          loading={loading}
-          >
-          Login
-        </MainButton>
-        <LinkButton
-          center
-          onClick={handleSwitch}
-          >
-          Sign up
-        </LinkButton>
+    <Card>
+      <Input 
+        placeholder='Username'
+        name='username'
+        type='email'
+        onChange={handleChange}
+        />
+      <Input 
+        placeholder='Password'
+        name='password'
+        type={showPassword ? 'text' : 'password'}
+        onChange={handleChange}
+        />
+      <div 
+        className='flex items-center gap-4 cursor-pointer'
+        onClick={toggleShowPassword}
+        >
+        <Input
+            placeholder='Show password'
+            type='checkbox'
+            checked={showPassword}
+            onChange={() => {}}
+            />
+        <label 
+          className='flex-1'
+          >Show password</label>
       </div>
-    </div>
+      <MainButton
+        onClick={login}
+        disabled={formInvalid}
+        loading={loading}
+        >
+        Login
+      </MainButton>
+      <LinkButton
+        center
+        onClick={handleSwitch}
+        >
+        Sign up
+      </LinkButton>
+    </Card>
   )
 }
 
