@@ -5,6 +5,7 @@ import { Channel, useChatContext } from 'stream-chat-react';
 import { GameContext } from '../../Contexts/GameContext';
 import GameRoom from './GameRoom';
 import { AuthContext } from '../../Contexts/AuthContext';
+import CustomMessageInput from './ChatRoom/CutomMessageInput';
 
 function GamePage() {
   const { setIsAuth } = useContext(AuthContext)
@@ -35,7 +36,7 @@ function GamePage() {
         </button>
       </div>
       {channel ?
-        <Channel channel={channel}>
+        <Channel channel={channel} Input={CustomMessageInput}>
           <GameRoom/>
         </Channel>
         :
