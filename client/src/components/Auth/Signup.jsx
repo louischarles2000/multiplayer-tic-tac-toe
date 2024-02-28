@@ -60,7 +60,7 @@ function Signup() {
   const signUp = async() => {
     if(formInvalid) return
     try {
-      const res = await axios.post('http://localhost:3000/signup', signupForm);
+      const res = await axios.post(`${import.meta.env.VITE_REACT_API_URL}/signup`, signupForm);
       setLoading(false)
       const {
         token,

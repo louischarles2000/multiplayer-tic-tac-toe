@@ -54,7 +54,7 @@ function Login() {
     if(formInvalid) return
     setLoading(true)
     try {
-      const res = await axios.post('http://localhost:3000/login', loginForm);
+      const res = await axios.post(`${import.meta.env.VITE_REACT_API_URL}/login`, loginForm);
       setLoading(false)
       console.log(res)
       const {

@@ -1,6 +1,5 @@
 import { useContext } from 'react';
 import './App.css';
-// import Home from './pages/Home'
 import Background from './HOC/Background';
 import { StreamChat } from 'stream-chat';
 import { Chat } from 'stream-chat-react';
@@ -9,14 +8,11 @@ import { AuthContext } from './Contexts/AuthContext';
 import GamePage from './pages/GamePage';
 import Auth from './components/Auth';
 
-const apiKey = "zvxx38u6rszp"
-// const secret = "a6sjfqkkfku8shjwcdsja9fcdbnymam2yatzqjhau542a4s9j7cj5tahyz2j725b"
-
 function App() {
   const { isAuth, setIsAuth } = useContext(AuthContext);
   const cookies = new Cookies();
   const token = cookies.get("token");
-  const client = StreamChat.getInstance(apiKey);
+  const client = StreamChat.getInstance(import.meta.env.VITE_STREAM_CHAT_API_KEY);
 
   if(token){
     client.connectUser({

@@ -1,13 +1,13 @@
+import dotenv from 'dotenv'
+dotenv.config();
 import express from 'express'
 import cors from 'cors'
 import { v4 as uuidv4 } from 'uuid'
 import bcrypt from 'bcrypt'
 import { StreamChat } from 'stream-chat'
 
-const app = express()
-const apiKey = "zvxx38u6rszp"
-const secret = "a6sjfqkkfku8shjwcdsja9fcdbnymam2yatzqjhau542a4s9j7cj5tahyz2j725b"
-const serverClient = StreamChat.getInstance(apiKey, secret);
+const app = express();
+const serverClient = StreamChat.getInstance(process.env.STREAM_CHAT_API_KEY, process.env.STREAM_CHAT_SECRET);
 
 app.use(cors());
 app.use(express.json());
